@@ -1,0 +1,14 @@
+work/
+extract/
+compiled/
+examples/
+
+*.bin
+*.cue
+*.iso
+*.zip
+*.out
+*.in
+*.o
+
+syms.txt
