@@ -34,6 +34,7 @@ extern "C"
     extern uint8_t NPC2_TABLE[];        // 0x8004B3B5
     extern uint8_t STORY_FLAGS[];       // 0x8004B3DE
     extern uint8_t VISITED_TABLE[];     // 0x8004B3C0
+    extern uint8_t BOSSES[];            // 0x0004B38E
 
     void drawUIBox(void* structPtr, int boxType, int32_t x, int32_t y);
     void internalDrawText(void* structPtr);

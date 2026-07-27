@@ -611,17 +611,65 @@ extern "C"
                     l1    = String("Follow Numemon upstairs and talk to HiAndromon");
                     l2    = String("");
                 }
-
                 break;
             case 18: // Secret room
-                title = String("Sewers");
-                l1    = String("Go save Lisa?");
-                l2    = String("");
+                title = String("Secrets");
+                l1    = String("Head down the left path of the Secret Stairs");
+                l2    = String("Continue further into the sewers");
                 break;
             case 20: // Asuka city locked
-                title = String("Asuka City");
-                l1    = String("Doors locked, go to asuka sewers and control room");
+                title = String("Asuka Bridge");
+                l1    = String("Go to Asuka Bridge");
                 l2    = String("");
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0202)
+                {
+                    title = String("Asuka Dock");
+                    l1    = String("Head to the dock on the right and go underwater");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x02e1 || MENU_CURRENT_MAP_STORE.mapId == 0x02e0)
+                {
+                    title = String("Underwater");
+                    l1    = String("Travel to the exit on the right");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x021b)
+                {
+                    title = String("Asuka Sewers");
+                    l1    = String("Head West until you find the Control Room");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x021c)
+                {
+                    title = String("Control Room");
+                    l1    = String("Talk to Datamon");
+                    l2    = String("");
+                }
+
+                if (isBitSet(BOSSES, 3)) // defeated Datamon
+                {
+                    title = String("Control Room");
+                    l1    = String("Talk to Datamon again");
+                    l2    = String("");
+                }
+                if (isBitSet(NPC2_TABLE, 27)) // talked Datamon again
+                {
+                    title = String("Staff Pass Hunt");
+                    l1    = String("Return to the Secret Room inside the");
+                    l2    = String("Dum Dum Factory Sewers");
+                }
+                if (isBitSet(NPC2_TABLE, 28)) // talked Lisa
+                {
+                    title = String("Staff Pass Hunt");
+                    l1    = String("Head through Suzaku Hall");
+                    l2    = String("to Suzaku UG Lake"); // TODO, we talk to Keith and Nick here
+                }
+                // ug lake is 0x0241
+                break;
+            case 21: // found DO staff pass
+                title = String("Backdoor");
+                l1    = String("Return to the Control Room");
+                l2    = String("and talk to Datamon");
                 break;
         }
 
@@ -662,7 +710,7 @@ extern "C"
             if (ASSET_TABLE[i].id == 0xB2) // ESSTATUS2.PRO
             {
                 current_base = ASSET_TABLE[i].ramAddr;
-                break; // Stop searching once found
+                break;
             }
         }
 
@@ -679,7 +727,6 @@ extern "C"
         return new_struct;
     }
 
-    // Standard helper function instead of a Lambda
     static void drawString(TextStruct* s, uint32_t overlay_base, uint32_t offset, int x, int y, int width)
     {
         if (offset == 0) return;

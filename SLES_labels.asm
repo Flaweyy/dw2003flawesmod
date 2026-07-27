@@ -8,6 +8,7 @@
 .definelabel NPC2_TABLE,     0x8004b3b5
 .definelabel VISITED_TABLE,     0x8004B3C0
 .definelabel STORY_FLAGS,     0x8004b3de
+.definelabel BOSSES,     0x0004B38E
 .definelabel ASSET_TABLE,       0x80044B3C 
 .definelabel PAD_INPUT,            0x8004B81C
 .definelabel CURRENT_LANG_ID,      0x8005CCA8
