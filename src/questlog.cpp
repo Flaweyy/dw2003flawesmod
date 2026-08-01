@@ -661,15 +661,38 @@ extern "C"
                 if (isBitSet(NPC2_TABLE, 28)) // talked Lisa
                 {
                     title = String("Staff Pass Hunt");
-                    l1    = String("Head through Suzaku Hall");
-                    l2    = String("to Suzaku UG Lake"); // TODO, we talk to Keith and Nick here
+                    l1    = String("Head to Suzaku Hall, go past Renamon then");
+                    l2    = String("exit the Hall and head underwater at the dock");
+                    if (MENU_CURRENT_MAP_STORE.mapId == 0x02e2 || MENU_CURRENT_MAP_STORE.mapId == 0x02e0)
+                    {
+                        title = String("Staff Pass Hunt");
+                        l1    = String("Continue right to find the UG Lake");
+                        l2    = String("");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId == 0x0241)
+                    {
+                        title = String("Staff Pass Hunt");
+                        l1    = String("Climb to the second level and go to the far left");
+                        l2    = String("to find Nick and Keith");
+                    }
                 }
                 // ug lake is 0x0241
                 break;
             case 21: // found DO staff pass
                 title = String("Backdoor");
-                l1    = String("Return to the Control Room");
-                l2    = String("and talk to Datamon");
+                l1    = String("Return to the Control Room and talk to Datamon");
+                l2    = String("");
+                break;
+            case 22:
+                title = String("Backdoor");
+                l1    = String("Enter the big door to the North");
+                l2    = String("");
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x021a)
+                {
+                    title = String("Admin Center B1F");
+                    l1    = String("Battle your way through to the next level");
+                    l2    = String("");
+                }
                 break;
         }
 
