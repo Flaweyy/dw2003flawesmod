@@ -30,6 +30,7 @@ extern "C"
     {
         // quest log
         uint32_t QUESTLOG_OVERLAY_PTR;  // Pointer to the Questlog Overlay in RAM, used for drawing the questlog
+        uint32_t QUESTLOG_COPIED_STRUCT_PTR; 
         uint32_t QUESTLOG_TITLE_OFFSET; // File Offset (Number)
         uint32_t QUESTLOG_STR1_OFFSET;  // File Offset
         uint32_t QUESTLOG_STR2_OFFSET;  // File Offset
@@ -38,7 +39,6 @@ extern "C"
         uint32_t SERVER_INTENT_FLAG;
         int32_t BACKUP_HEAD_X;   // Used to store the player's head direction when warping
         int32_t BACKUP_HEAD_Y;   // Used to store the player's head direction when warping
-        uint8_t _padding[3]; // Padding to align the struct to 32 bytes, not strictly necessary but keeps things clean
         uint32_t DEBUG_PRINT;
         uint32_t DEBUG_PRINT2;
     };

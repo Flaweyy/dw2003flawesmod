@@ -144,13 +144,40 @@ extern "C"
                 return true; // blocked for keith first battle at asuka bridge
             if (MAIN_STORY_FLAG >= 20 && MAIN_STORY_FLAG <= 23) return true; // blocked during datamon quest arc
         }
-        if (mapId == MAP_ASUKA_CITY_B){
+        if (mapId == MAP_ASUKA_CITY_B)
+        {
             // TODO block while knightmon activated
         }
-        if (mapId == MAP_MOBIUS_DESERT_B || mapId == MAP_MIRAGE_TOWER_B){
+        if (mapId == MAP_MOBIUS_DESERT_B || mapId == MAP_MIRAGE_TOWER_B)
+        {
             if (MAIN_STORY_FLAG >= 34 && MAIN_STORY_FLAG <= 36) return true; // blocked while AOA occupy
         }
         return false;
+    }
+
+    void applyFastTravelRedirect(uint16_t& mapId, int32_t& warpX, int32_t& warpY, uint16_t& headX, uint16_t& headY)
+    {
+        if (mapId == MAP_ASUKA_CITY_A && MAIN_STORY_FLAG == 6 && !(SUB_STORY_FLAG_2 & Phase::BlueCard::ASUKA_INN))
+        {
+            // keith battle at bridge
+            mapId = 0x0202; // asuka bridge
+            warpX = 163380; // not instant trigger is 155845; // override X
+            warpY = 76748;  // not instant trigger is 80200;  // override Y
+        }
+        if (mapId == MAP_ASUKA_CITY_A && MAIN_STORY_FLAG >= 20 && MAIN_STORY_FLAG <= 23)
+        {
+            // datamon quest, asuka city locked
+            mapId = 0x0202; // asuka bridge
+            warpX = 187816; // override X
+            warpY = 63328;  // override Y
+        }
+        if (mapId == MAP_SUZAKU_CITY_A && MAIN_STORY_FLAG == 25 && !isBitSet(NPC2_TABLE, 81))
+        {
+            // earthquake trigger at phoenix bay (not actually required but is a nice touch)
+            mapId = MAP_PHOENIX_BAY_A;
+            warpX = 330176; // override X
+            warpY = 56800;  // override Y
+        }
     }
 
     bool handleFastTravel(MapState* mapStatePtr)
@@ -187,21 +214,27 @@ extern "C"
         if (dest)
         {
             uint16_t newMapId = (server == 1) ? dest->amatId : dest->asukaId;
+            int32_t newWarpX  = dest->warpX;
+            int32_t newWarpY  = dest->warpY;
+            uint16_t newHeadX = dest->headX;
+            uint16_t newHeadY = dest->headY;
 
-            if (isMapBlocked(newMapId))
-            {
-                playSfx(0x800450B2); // blocked sound
-                return false;
-            }
+            applyFastTravelRedirect(newMapId, newWarpX, newWarpY, newHeadX, newHeadY);
+
+            // if (isMapBlocked(newMapId))
+            // {
+            //     playSfx(0x800450B2); // blocked sound
+            //     return false;
+            // }
 
             // Select correct Map ID based on viewed server
             MENU_CURRENT_MAP_STORE.mapId = newMapId;
-            MENU_CURRENT_MAP_STORE.x     = dest->warpX;
-            MENU_CURRENT_MAP_STORE.y     = dest->warpY;
+            MENU_CURRENT_MAP_STORE.x     = newWarpX;
+            MENU_CURRENT_MAP_STORE.y     = newWarpY;
 
             // Update Head Visuals (s1 + 0x98)
-            mapStatePtr->headX = dest->headX;
-            mapStatePtr->headY = dest->headY;
+            mapStatePtr->headX = newHeadX;
+            mapStatePtr->headY = newHeadY;
 
             playSfx(0x8004503C); // success sound
 

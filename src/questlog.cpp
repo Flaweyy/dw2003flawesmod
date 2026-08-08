@@ -1,5 +1,6 @@
 #include "questlog.h"
 
+#include "extern/dw2003.hpp"
 #include "map.h"
 
 static uint32_t cached_overlay_base = 0;
@@ -200,8 +201,8 @@ extern "C"
 
             case 6: // Blue Card Arc
                 // --- BASE: Asuka Bridge ---
-                title = String("Asuka Bridge");
-                l1    = String("Head to Asuka Bridge and defeat Mystery Player");
+                title = String("Asuka City");
+                l1    = String("Head to Asuka City and defeat Mystery Player");
                 l2    = String("");
 
                 // --- PHASE: Asuka Inn ---
@@ -685,15 +686,63 @@ extern "C"
                 break;
             case 22:
                 title = String("Backdoor");
-                l1    = String("Enter the big door to the North");
-                l2    = String("");
+                l1    = String("Enter the big door to the North of");
+                l2    = String("the Control Room");
                 if (MENU_CURRENT_MAP_STORE.mapId == 0x021a)
                 {
                     title = String("Admin Center B1F");
                     l1    = String("Battle your way through to the next level");
                     l2    = String("");
                 }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0215)
+                {
+                    title = String("Basement Stairs");
+                    l1    = String("Continue up to the next level");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0214)
+                {
+                    title = String("Admin Center 1F");
+                    l1    = String("Head upstairs to Admin Center 2F");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0217)
+                {
+                    title = String("Admin Center 2F");
+                    l1    = String("Battle through to the Master Room");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0218)
+                {
+                    title = String("Master Room");
+                    l1    = String("Examine the paintings in the order of");
+                    l2    = String("M, O, N, S, T, E, R");
+                }
                 break;
+            case 24:
+                title = String("Byakko Dome");
+                l1    = String("Return to Byakko Dome inside Byakko City");
+                l2    = String("");
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x025e)
+                {
+                    title = String("Byakko Dome");
+                    l1    = String("Turn right, go past Divermon");
+                    l2    = String("and into the Underground Cave");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0260)
+                {
+                    title = String("Underground Cave");
+                    l1    = String("Talk to the A.O.A General");
+                    l2    = String("");
+                }
+                break;
+            case 25:
+                // note if we allow teleporting to suzaku city here, we skip the cutscene in phoenix bay
+                title = String("Suzaku Hall");
+                l1    = String("Go to Suzaku Hall inside Suzaku City");
+                l2    = String("and talk to Patamon");
+                break;
+            case 26: break;
         }
 
         // if (MENU_CURRENT_MAP_STORE.mapId == MAP_EAST_STATION_A)
@@ -719,7 +768,7 @@ extern "C"
     void* wrapCreateStruct(int16_t a0, int32_t a1, int32_t x, int32_t y)
     {
         // 1. Call the game's actual function
-        void* new_struct = allocateTextStruct(a0, a1, x, y);
+        uint32_t* new_struct = allocateTextStruct(a0, a1, x, y);
 
         if (y != 0x31)
         {
@@ -738,7 +787,8 @@ extern "C"
         }
 
         // 3. Save to static registry
-        STATIC_VARS_BASE.QUESTLOG_OVERLAY_PTR = current_base;
+        STATIC_VARS_BASE.QUESTLOG_OVERLAY_PTR       = current_base;
+        STATIC_VARS_BASE.QUESTLOG_COPIED_STRUCT_PTR = (uint32_t)new_struct;
 
         // The last of the 6 calls will be the final version in your workspace
         if (new_struct != nullptr) { memcpy((void*)(current_base + 0x990), new_struct, 384); }
@@ -766,9 +816,7 @@ extern "C"
         TextStruct* s1        = (TextStruct*)(overlay_base + 0x990); // struct lives at 0x990
 
         // Load original struct pointer and check if it is visible before drawing text
-        TextStruct* originalStruct =
-            (TextStruct*)(s1->originalStructPtr +
-                          0xC); // originalStructPtr is actually originalStruct - 0xC, so add 0xC to get correct address
+        TextStruct* originalStruct = (TextStruct*)STATIC_VARS_BASE.QUESTLOG_COPIED_STRUCT_PTR;
         if (originalStruct == nullptr || originalStruct->visible == 0) { return; }
 
         // Draw Strings using the helper

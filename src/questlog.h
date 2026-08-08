@@ -38,7 +38,7 @@ extern "C"
 
     void drawUIBox(void* structPtr, int boxType, int32_t x, int32_t y);
     void internalDrawText(void* structPtr);
-    void* allocateTextStruct(int16_t a0, int32_t a1, int32_t x, int32_t y);
+    uint32_t* allocateTextStruct(int16_t a0, int32_t a1, int32_t x, int32_t y); // 0x8001ae38
 }
 
 // Update the helper to handle the full MapID
@@ -73,9 +73,6 @@ struct TextStruct
     uint8_t y;
     uint8_t padding4[0xE];
     uint8_t visible;
-    uint8_t padding5[0xB2];
-    // offset 0x174 is pointer to original struct minus 0xC (need to add 0xC to get correct address)
-    uint32_t originalStructPtr;
 };
 
 namespace Phase
