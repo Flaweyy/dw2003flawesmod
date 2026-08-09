@@ -178,6 +178,13 @@ extern "C"
             warpX = 330176; // override X
             warpY = 56800;  // override Y
         }
+        if (mapId == MAP_ASUKA_CITY_B && MAIN_STORY_FLAG <= 40) // todo find actual flag here
+        {
+            // block while knightmon activated
+            mapId = 0x0272; // asuka bridge AM
+            warpX = 97992; // override X
+            warpY = 109722;  // override Y
+        }
     }
 
     bool handleFastTravel(MapState* mapStatePtr)

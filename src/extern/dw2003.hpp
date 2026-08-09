@@ -57,6 +57,9 @@ extern "C"
         uint16_t padding; // 0x02
         int32_t x;        // 0x04
         int32_t y;        // 0x08
+        uint32_t padding2; // 0x0C
+        uint16_t mapVariation1; // variations only used for mobius desert and circuit board (probably)
+        uint16_t mapVariation2; // variations only used for mobius desert and circuit board (probably)
     };
 
     extern StaticVars STATIC_VARS_BASE;

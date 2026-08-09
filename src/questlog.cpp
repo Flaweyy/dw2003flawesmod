@@ -738,11 +738,200 @@ extern "C"
                 break;
             case 25:
                 // note if we allow teleporting to suzaku city here, we skip the cutscene in phoenix bay
+                // fixed now, we teleport to cutscene instead of city
                 title = String("Suzaku Hall");
                 l1    = String("Go to Suzaku Hall inside Suzaku City");
                 l2    = String("and talk to Patamon");
                 break;
-            case 26: break;
+            case 26:
+                title = String("To The Jungle");
+                l1    = String("Investigate the Ether Jungle!");
+                l2    = String("Take the third turn to find the Jungle Shrine");
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_JUNGLE_SHRINE_A)
+                {
+                    title = String("Jungle Shrine");
+                    l1    = String("Continue into the shrine to find the Catacomb");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0244)
+                {
+                    title = String("Catacomb");
+                    l1    = String("Find the Suzaku Leader, then continue");
+                    l2    = String("into the Bug Maze");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0245)
+                {
+                    title = String("Bug Maze");
+                    l1    = String("After the first ramp, climb the invisible ladder");
+                    l2    = String("in the top of the alcove. Take top fork to the Pit");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0246)
+                {
+                    title = String("Bug Maze Pit");
+                    l1    = String("Head further in to find Bulbmon");
+                    l2    = String("");
+                }
+                break;
+            case 27:
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x0245)
+                {
+                    title = String("Bug Maze");
+                    l1    = String("Take the top right path to the exit");
+                    l2    = String("");
+                }
+                title = String("Qing Long Chief");
+                l1    = String("Exit the AM Forest Inn and head to");
+                l2    = String("Qing Long City (Seiryu City). Defeat the Chief");
+                break;
+            case 28:
+                title = String("Zhu Que Chief");
+                l1    = String("Go to Shell Beach, south of Central Park,");
+                l2    = String("then through the seabed to Phoenix Bay");
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_PHOENIX_BAY_B ||
+                    MENU_CURRENT_MAP_STORE.mapId == MAP_SUZAKU_CITY_B ||
+                    MENU_CURRENT_MAP_STORE.mapId == 0x02ac    // suzaku inn am
+                    || MENU_CURRENT_MAP_STORE.mapId == 0x02ad // suzaku hall am
+                )
+                {
+                    title = String("Zhu Que Chief");
+                    l1    = String("Head into Zhu Que City (Suzuaku City)");
+                    l2    = String("and defeat the Chief");
+                }
+                break;
+            case 29:
+                title = String("Digi-Egg of Knowledge");
+                l1    = String("Go back through Zhu Que Hall, right exit,");
+                l2    = String("then through the seabed to Zhu Que UG Lake");
+                if (MENU_CURRENT_MAP_STORE.mapId == 0x02ae)
+                {
+                    title = String("Digi-Egg of Knowledge");
+                    l1    = String("Climb to the third level, then climb");
+                    l2    = String("the left staircase to find the Egg");
+                }
+                break;
+            case 30:
+                title = String("To North Sector");
+                l1    = String("Return to Plug Cape in Asuka Server");
+                l2    = String("");
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_PLUG_CAPE_A)
+                {
+                    title = String("To North Sector");
+                    l1    = String("In Plug Cape, head North and climb the big ladder");
+                    l2    = String("then cross the bridge and enter the hole");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId > 700)
+                {
+                    // catch all for if someone goes the wrong way in the circuit board
+                    title = String("To North Sector");
+                    l1    = String("You have gone the wrong way, either head back");
+                    l2    = String("or start again from Plug Cape");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 745 && MENU_CURRENT_MAP_STORE.mapVariation1 == 2 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 2)
+                {
+                    title = String("To North Sector");
+                    l1    = String("Head north to the next screen");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 749 && MENU_CURRENT_MAP_STORE.mapVariation1 == 2 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 2)
+                {
+                    title = String("To North Sector");
+                    l1    = String("Continue up and take the right path at the fork,");
+                    l2    = String("you will pass by Renamon");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 750 && MENU_CURRENT_MAP_STORE.mapVariation1 == 2 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("To North Sector");
+                    l1    = String("Take the left path twice and go past Agumon");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 748 && MENU_CURRENT_MAP_STORE.mapVariation1 == 2 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("To North Sector");
+                    l1    = String("Take the right path (break the block) then");
+                    l2    = String("go left at the next fork");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 744 && MENU_CURRENT_MAP_STORE.mapVariation1 == 2 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("To North Sector");
+                    l1    = String("Continue up to the exit");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_BOOT_MOUNTAIN_A)
+                {
+                    title = String("Boot Mountain");
+                    l1    = String("Head East to find Snow Mountain");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_SNOW_MOUNTAIN_A)
+                {
+                    title = String("Snow Mountain");
+                    l1    = String("From here, head North until you find Freeze Mountain");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_FREEZE_MOUNTAIN_A)
+                {
+                    title = String("Freeze Mountain");
+                    l1    = String("From here, head North until you find Freeze Mountain");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 622 || MENU_CURRENT_MAP_STORE.mapId == MAP_GENBU_CITY_A)
+                {
+                    title = String("Genbu City");
+                    l1    = String("Enter Genbu City and climb to the very top");
+                    l2    = String("to find and defeat the Genbu Leader");
+                }
+                break;
+            case 31:
+                title = String("Kulon Mine");
+                l1    = String("Return to Boot Mountain and then head West");
+                l2    = String("to find Kulon Mine");
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_KULON_MINE_A)
+                {
+                    title = String("Kulon Pit");
+                    l1    = String("The Legendary Gym is to the west through Lake of Ice");
+                    l2    = String("if you want to train. Otherwise head down into the Pit");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == MAP_KULON_PIT_A)
+                {
+                    title = String("Kulon Pit");
+                    l1    = String("Continue further down and to the West");
+                    l2    = String("to find the Ice Dungeon");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 618)
+                {
+                    title = String("Ice Dungeon");
+                    l1    = String("Take the middle slider then up and left, jump off");
+                    l2    = String("the ledge. Use right teleporter and defeat the Witch");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 619)
+                {
+                    title = String("Fire Dungeon");
+                    l1    = String("Head to the bottom right until you find a staircase,");
+                    l2    = String("the Fire Knight is at the top of them");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 620)
+                {
+                    title = String("Dark Dungeon");
+                    l1    = String("Make your way through the maze, heading roughly");
+                    l2    = String("North and West, until you find the staircase");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 621)
+                {
+                    title = String("Chamber Room");
+                    l1    = String("Go upstairs and talk to the lady twice");
+                    l2    = String("");
+                }
+                break;
+                case 32:
+                    // title = String("Chamber Room");
+                    // l1    = String("Go upstairs and talk to the lady twice");
+                    // l2    = String("");
+                    break;
         }
 
         // if (MENU_CURRENT_MAP_STORE.mapId == MAP_EAST_STATION_A)
