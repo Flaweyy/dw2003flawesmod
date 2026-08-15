@@ -182,8 +182,18 @@ extern "C"
         {
             // block while knightmon activated
             mapId = 0x0272; // asuka bridge AM
-            warpX = 97992; // override X
-            warpY = 109722;  // override Y
+            warpX = 97992;  // override X
+            warpY = 109722; // override Y
+        }
+        if (mapId == MAP_MOBIUS_DESERT_B || mapId == MAP_MIRAGE_TOWER_B)
+        {
+            // blocked while AOA occupy
+            if (MAIN_STORY_FLAG >= 34 && MAIN_STORY_FLAG <= 36)
+            {
+                mapId = 704;    // S Noise Desert
+                warpX = 89826;  // override X
+                warpY = 146074; // override Y
+            }
         }
     }
 

@@ -819,7 +819,7 @@ extern "C"
                     l1    = String("In Plug Cape, head North and climb the big ladder");
                     l2    = String("then cross the bridge and enter the hole");
                 }
-                if (MENU_CURRENT_MAP_STORE.mapId > 700)
+                if (MENU_CURRENT_MAP_STORE.mapId > 740)
                 {
                     // catch all for if someone goes the wrong way in the circuit board
                     title = String("To North Sector");
@@ -923,15 +923,99 @@ extern "C"
                 if (MENU_CURRENT_MAP_STORE.mapId == 621)
                 {
                     title = String("Chamber Room");
-                    l1    = String("Go upstairs and talk to the lady twice");
+                    l1    = String("Go upstairs and talk to Chamber Clark twice");
                     l2    = String("");
                 }
                 break;
-                case 32:
-                    // title = String("Chamber Room");
-                    // l1    = String("Go upstairs and talk to the lady twice");
-                    // l2    = String("");
-                    break;
+            case 32:
+                title = String("Magasta Base");
+                l1    = String("Feel free to run around and pick up items,");
+                l2    = String("otherwise wait for the timer to run out");
+                break;
+            case 33:
+                title = String("Master Room");
+                l1    = String("Return to the Master Room inside Asuka City");
+                l2    = String("");
+                if (isBitSet(NPC2_TABLE, 57))
+                {
+                    title = String("Mirage Tower AM");
+                    l1    = String("Return to Zhu Que City in the Amaterasu Server");
+                    l2    = String("");
+                    
+                    // ALTERNATIVE for if they have no fast travel, could use in future if settings page is added
+                    // and we can tell if they are using fast travel or not
+
+                    // if (MENU_CURRENT_MAP_STORE.mapId > 740)
+                    // {
+                    //     // catch all for if someone goes the wrong way in the circuit board
+                    //     title = String("Mirage Tower AM");
+                    //     l1    = String("You have gone the wrong way, either head back");
+                    //     l2    = String("or start again from Central Park (Asuka Server)");
+                    // }
+                    // if (MENU_CURRENT_MAP_STORE.mapId == 744 && MENU_CURRENT_MAP_STORE.mapVariation1 == 3 &&
+                    //     MENU_CURRENT_MAP_STORE.mapVariation2 == 3)
+                    // {
+                    //     title = String("Mirage Tower AM");
+                    //     l1    = String("Head South to the next area");
+                    //     l2    = String("");
+                    // }
+                    // if (MENU_CURRENT_MAP_STORE.mapId == 750 && MENU_CURRENT_MAP_STORE.mapVariation1 == 3 &&
+                    //     MENU_CURRENT_MAP_STORE.mapVariation2 == 2)
+                    // {
+                    //     title = String("Mirage Tower AM");
+                    //     l1    = String("At the fork, take the upper path");
+                    //     l2    = String("and then go North");
+                    // }
+                    // if (MENU_CURRENT_MAP_STORE.mapId == 749 && MENU_CURRENT_MAP_STORE.mapVariation1 == 3 &&
+                    //     MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                    // {
+                    //     title = String("Mirage Tower AM");
+                    //     l1    = String("Follow the path until you hit the fork, take");
+                    //     l2    = String("the right path, you will pass by Guilmon");
+                    // }
+                    // if (MENU_CURRENT_MAP_STORE.mapId == 744 && MENU_CURRENT_MAP_STORE.mapVariation1 == 3 &&
+                    //     MENU_CURRENT_MAP_STORE.mapVariation2 == 2)
+                    // {
+                    //     title = String("Mirage Tower AM");
+                    //     l1    = String("Continue North and exit to Jungle Grave (AM)");
+                    //     l2    = String("");
+                    // }
+
+                    if (MENU_CURRENT_MAP_STORE.mapId > 624 && MENU_CURRENT_MAP_STORE.mapId < 689)
+                    {
+                        title = String("Mirage Tower AM");
+                        l1    = String("Head West to South Cape through Phoenix Bay");
+                        l2    = String("and Ether Jungle, then go to West Sector");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId == MAP_SOUTH_CAPE_B)
+                    {
+                        title = String("Mirage Tower AM");
+                        l1    = String("Go through the seabed at the dock to");
+                        l2    = String("West Sector");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId >= 689 && MENU_CURRENT_MAP_STORE.mapId < 713) //north sector starts 713
+                    {
+                        title = String("Mirage Tower AM");
+                        l1    = String("Go West and South to reach Mobius Desert");
+                        l2    = String("");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId == 705 ||
+                        MENU_CURRENT_MAP_STORE.mapId == 706) // These are the two map ids for mobius desert AM
+                    {
+                        title = String("Mirage Tower AM");
+                        l1    = String("From the first screen, take lower left exit twice");
+                        l2    = String("then take upper left exit three times");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId == 707 || MENU_CURRENT_MAP_STORE.mapId == 708 ||
+                        MENU_CURRENT_MAP_STORE.mapId == 709) // mobius tower and hall and room (AM)
+                    {
+                        title = String("Mirage Tower AM");
+                        l1    = String("Enter Mirage Hall and talk to Leader Chuck");
+                        l2    = String("");
+                    }
+                }
+                
+                break;
         }
 
         // if (MENU_CURRENT_MAP_STORE.mapId == MAP_EAST_STATION_A)
