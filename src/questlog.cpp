@@ -1217,20 +1217,6 @@ extern "C"
                 break;
         }
 
-        // if (MENU_CURRENT_MAP_STORE.mapId == MAP_EAST_STATION_A)
-        // {
-        //     title = String("Gondola");
-        //     l1    = String("Attempt to activate the gondola");
-        //     l2    = String("");
-        // }
-
-        // if (checkVisited(MAP_SOUTH_CAPE_A))
-        // {
-        //     title = String("West Sector");
-        //     l1    = String("Head North to the lily pad dock and call");
-        //     l2    = String("Submarimon");
-        // }
-
         // 3. COMMIT: We save the OFFSETS to the registry
         STATIC_VARS_BASE.QUESTLOG_TITLE_OFFSET = title;
         STATIC_VARS_BASE.QUESTLOG_STR1_OFFSET  = l1;
