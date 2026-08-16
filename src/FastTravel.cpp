@@ -178,7 +178,7 @@ extern "C"
             warpX = 330176; // override X
             warpY = 56800;  // override Y
         }
-        if (mapId == MAP_ASUKA_CITY_B && MAIN_STORY_FLAG <= 40) // todo find actual flag here
+        if (mapId == MAP_ASUKA_CITY_B && MAIN_STORY_FLAG <= 36) // we get access to amaterasu city at flag 37
         {
             // block while knightmon activated
             mapId = 0x0272; // asuka bridge AM

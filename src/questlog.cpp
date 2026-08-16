@@ -941,7 +941,7 @@ extern "C"
                     title = String("Mirage Tower AM");
                     l1    = String("Return to Zhu Que City in the Amaterasu Server");
                     l2    = String("");
-                    
+
                     // ALTERNATIVE for if they have no fast travel, could use in future if settings page is added
                     // and we can tell if they are using fast travel or not
 
@@ -981,7 +981,8 @@ extern "C"
                     //     l2    = String("");
                     // }
 
-                    if (MENU_CURRENT_MAP_STORE.mapId > 624 && MENU_CURRENT_MAP_STORE.mapId < 689)
+                    if (MENU_CURRENT_MAP_STORE.mapId > 624 &&
+                        MENU_CURRENT_MAP_STORE.mapId < 689) // north sector is 689 and above
                     {
                         title = String("Mirage Tower AM");
                         l1    = String("Head West to South Cape through Phoenix Bay");
@@ -993,7 +994,8 @@ extern "C"
                         l1    = String("Go through the seabed at the dock to");
                         l2    = String("West Sector");
                     }
-                    if (MENU_CURRENT_MAP_STORE.mapId >= 689 && MENU_CURRENT_MAP_STORE.mapId < 713) //north sector starts 713
+                    if (MENU_CURRENT_MAP_STORE.mapId >= 689 &&
+                        MENU_CURRENT_MAP_STORE.mapId < 713) // north sector starts 713
                     {
                         title = String("Mirage Tower AM");
                         l1    = String("Go West and South to reach Mobius Desert");
@@ -1014,7 +1016,204 @@ extern "C"
                         l2    = String("");
                     }
                 }
-                
+                if (isBitSet(NPC1_TABLE, 52))
+                {
+                    title = String("Bai Hu City");
+                    l1    = String("Exit the Tower and head North through");
+                    l2    = String("Noise Desert towards Bai Hu City (Byakko City)");
+                    if (MENU_CURRENT_MAP_STORE.mapId == MAP_NOISE_DESERT_B)
+                    {
+                        title = String("Master Room");
+                        l1    = String("The entrance to Bai Hu City is blocked!");
+                        l2    = String("Return to the Master Room in Asuka City");
+                    }
+                    if (MENU_CURRENT_MAP_STORE.mapId == 536) // master room
+                    {
+                        title = String("Master Room");
+                        l1    = String("Talk to Lisa to see if she can help us");
+                        l2    = String("get access to Bai Hu City");
+                    }
+                }
+
+                break;
+            case 34:
+                title = String("Bai Hu City");
+                l1    = String("Return to Noise Desert and enter Bai Hu City");
+                l2    = String("then enter the Dome and defeat the Chief");
+                break;
+            case 35:
+                title = String("Xuan Wu City");
+                l1    = String("Head to Plug Cape in Amaterasu and enter the");
+                l2    = String("same hole as in Asuka (up ladder, across bridge)");
+                if (MENU_CURRENT_MAP_STORE.mapId > 740)
+                {
+                    // catch all for if someone goes the wrong way in the circuit board
+                    title = String("Xuan Wu City");
+                    l1    = String("You have gone the wrong way, either head back");
+                    l2    = String("or start again from Plug Cape in Amaterasu");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 745 && MENU_CURRENT_MAP_STORE.mapVariation1 == 9 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 3)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Head north to the next screen");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 749 && MENU_CURRENT_MAP_STORE.mapVariation1 == 9 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 2)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Continue up and take the right path at the fork,");
+                    l2    = String("you will pass by Guilmon");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 750 && MENU_CURRENT_MAP_STORE.mapVariation1 == 9 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Take the left path twice and go past Kumamon");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 748 && MENU_CURRENT_MAP_STORE.mapVariation1 == 9 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Take the right path (break the block) then");
+                    l2    = String("go left at the next fork, past Renamon");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 744 && MENU_CURRENT_MAP_STORE.mapVariation1 == 9 &&
+                    MENU_CURRENT_MAP_STORE.mapVariation2 == 1)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Continue up to the exit");
+                    l2    = String("");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId >= 689)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Head East to Snow Mountain, then North through");
+                    l2    = String("Freeze Mountain to Xuan Wu City");
+                }
+                if (MENU_CURRENT_MAP_STORE.mapId == 725 || MENU_CURRENT_MAP_STORE.mapId == MAP_GENBU_CITY_B)
+                {
+                    title = String("Xuan Wu City");
+                    l1    = String("Enter Xuan Wu City and climb to the very top");
+                    l2    = String("to find and defeat the Xuan Wu Chief");
+                }
+                break;
+            case 36:
+                title = String("Central Park AM");
+                l1    = String("Head to Central Park in Amaterasu Server");
+                l2    = String("and walk North towards Amaterasu Bridge");
+                break;
+            case 37:
+                title = String("Amaterasu City");
+                l1    = String("Enter the Admin Center and fight your way");
+                l2    = String("to the Master Room");
+                break;
+            case 38:
+                title = String("Qing Long City");
+                l1    = String("Nick says that Keith is experimenting in");
+                l2    = String("Qing Long City. Find him in Qing Long Tower");
+                if (isBitSet(NPC1_TABLE, 1))
+                {
+                    title = String("Gale Tower");
+                    l1    = String("Go to Gale Tower inside Seiryu City");
+                    l2    = String("and talk to Airdramon");
+                }
+                if (isBitSet(NPC1_TABLE, 10))
+                {
+                    // This isnt actually a flag unfortunately, so we cant have the below
+                    // title = String("Login Room AM");
+                    // l1    = String("Return to the Login Room in Amaterasu City");
+                    // l2    = String("");
+
+                    title = String("Master Room AS");
+                    l1    = String("Kurt says something is interferring.");
+                    l2    = String("Head to the Master Room in Asuka City");
+                    if (MENU_CURRENT_MAP_STORE.mapId == 536) // master room
+                    {
+                        title = String("A.O.A Headquarters");
+                        l1    = String("Enter the door into A.O.A Headquarters");
+                        l2    = String("");
+                    }
+                }
+                break;
+            case 39:
+                title = String("Master Room AM");
+                l1    = String("Return to the Master Room in Amaterasu City");
+                l2    = String("");
+                break;
+            case 40:
+                title = String("A.O.A Headquarters");
+                l1    = String("Enter the portal when you are ready");
+                l2    = String("");
+                if (MENU_CURRENT_MAP_STORE.mapId == 733)
+                {
+                    title = String("Gunslinger 1F");
+                    l1    = String("Take bottom right portal, bottom right again");
+                    l2    = String("and then top left. Access the computer");
+                    if (isBitSet(NPC2_TABLE, 58))
+                    {
+                        title = String("Gunslinger 1F");
+                        l1    = String("Take blue portal, then top right in front of box,");
+                        l2    = String("top left, bottom right, bottom left, bottom right");
+                    }
+                    if (isBitSet(STORY_FLAGS, 112))
+                    {
+                        title = String("Gunslinger 1F");
+                        l1    = String("Access the computer");
+                        l2    = String("");
+                    }
+                    if (isBitSet(NPC2_TABLE, 59))
+                    {
+                        title = String("Gunslinger 1F");
+                        l1    = String("Return (blue), top right before box, top left,");
+                        l2    = String("straight across, top left, bottom right, top left");
+                    }
+                    if (isBitSet(STORY_FLAGS, 113))
+                    {
+                        title = String("Gunslinger 1F");
+                        l1    = String("Access the computer");
+                        l2    = String("");
+                    }
+                    if (isBitSet(NPC2_TABLE, 60))
+                    {
+                        title = String("Gunslinger 1F");
+                        l1    = String("Return (blue), then top left blue portal");
+                        l2    = String("");
+                    }
+                }
+
+                if (MENU_CURRENT_MAP_STORE.mapId == 734)
+                {
+                    title = String("Gunslinger 2F");
+                    l1    = String("Defeat the Metal Solider and continue");
+                    l2    = String("");
+                    if (isBitSet(NPC2_TABLE, 60))
+                    {
+                        title = String("Gunslinger 2F");
+                        l1    = String("Climb the staircase and defeat Lord Megadeath");
+                        l2    = String("");
+                    }
+                }
+
+                break;
+            case 41:
+                title = String("Gunslinger");
+                l1    = String("Enter the portal and climb the staircase");
+                l2    = String("");
+
+                if (MENU_CURRENT_MAP_STORE.mapId == 735)
+                {
+                    title = String("Control Room");
+                    l1    = String("Take the left and final portal");
+                    l2    = String("");
+                }
+                break;
+            case 45:
+                title = String("Post Game");
+                l1    = String("This guide ends here, good luck!");
+                l2    = String("Created by Flawe");
                 break;
         }
 

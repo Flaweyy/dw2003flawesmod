@@ -9,7 +9,7 @@
 
 ; Offset 0x37E08 -> RAM Address 0x80047608 (0x8000F800 + 0x37E08)
 .org 0x80047608
-    .halfword 0x0010      ; Sets New Size to 16 Sectors -> 10 00
+    .halfword 0x0015      ; Sets New Size to 21 Sectors -> 15 00
 
 ; =========================================================
 ; 1. THE PERMANENT HOOKS

@@ -10,9 +10,9 @@ File System:
      File |SYSTEM.CNF    |1       |23     |00:02:23  |70         |work/DIGIMON/SYSTEM.CNF
      File |SLES_039.36   |451     |24     |00:02:24  |923648     |work/DIGIMON/SLES_039.36
      File |STSTATUS.PRO  |55      |276901 |61:34:01  |111176     |work/DIGIMON/EXTENDED_FILES/STSTATUS2.PRO
-     File |ESSTATUS.BIN  |16      |276956 |61:34:56  |32678      |work/DIGIMON/EXTENDED_FILES/ESSTATUS2.BIN
-     File |FIGHTST2.PRO  |70      |276972 |61:34:72  |143088     |work/DIGIMON/EXTENDED_FILES/FIGHTSTG2.PRO
-     File |DUMMY.        |17229   |277042 |61:35:67  |35283682   |work/DIGIMON/DUMMY.
+     File |ESSTATUS.BIN  |21      |276956 |61:34:56  |42710      |work/DIGIMON/EXTENDED_FILES/ESSTATUS2.BIN
+     File |FIGHTST2.PRO  |70      |276977 |61:35:02  |143088     |work/DIGIMON/EXTENDED_FILES/FIGHTSTG2.PRO
+     File |DUMMY.        |17229   |277047 |61:35:72  |35283682   |work/DIGIMON/DUMMY.
      Dir  |AAA           |        |475    |00:08:25  |           |
       Dir  |PRO           |        |476    |00:08:26  |           |
        File |CARDGAME.PRO  |71      |486    |00:08:36  |143664     |work/DIGIMON/AAA/PRO/CARDGAME.PRO
@@ -2589,4 +2589,4 @@ File System:
          XA |MOVIEOPN.STR  |18088   |258813 |57:32:63  |42253568   |work/DIGIMON/AAA/STR/MOVIEOPN.STR
       End  |STR           |        |       |          |           |
      End  |AAA           |        |       |          |           |
-    Dummy |<DUMMY>       |150     |294271 |65:25:46  |307200     |
+    Dummy |<DUMMY>       |150     |294276 |65:25:51  |307200     |

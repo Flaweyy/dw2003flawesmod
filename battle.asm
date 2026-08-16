@@ -5,7 +5,7 @@
 
 ; Offset 0x35d08 -> RAM Address 80045508 (0x8000F800 + 0x35d08)
 .org 0x80045508
-    .word 0x000439EC  ; Sets New LBA (Hex 439EC)
+    .word 0x000439F1  ; Sets New LBA (Hex 439F1)
 
 ; Offset 0x37F72 -> RAM Address 0x80047772 (0x8000F800 + 0x37F72)
 .org 0x80047772
