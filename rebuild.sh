@@ -21,7 +21,6 @@ sh ./src/compile.sh
 ./tools/linux/armips questlog_esstatus.asm
 ./tools/linux/armips questlog_sles.asm
 ./tools/linux/armips fast_travel.asm
-# ./tools/linux/armips battle.asm
 ./tools/linux/armips battle.asm
 ./tools/linux/armips overworld.asm
 
